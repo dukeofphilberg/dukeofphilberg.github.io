@@ -1,5 +1,5 @@
 const IMPORT_CONFIG = {
-    "itemValueMode": 1,
+    "itemValueMode": 2,
     "allowEqualMax": false,
     "raidCompletionBonusValue": 0,
     "autoAwardOnlineOnly": false,
@@ -11,7 +11,7 @@ const IMPORT_CONFIG = {
     "onTimeBonus": false,
     "intervalBonusValue": 0,
     "onTimeBonusValue": 0,
-    "minimumPoints": 0,
+    "minimumPoints": -10000,
     "useOS": true,
     "antiSnipe": 0,
     "benchMultiplier": 1,
@@ -31,14 +31,22 @@ const IMPORT_CONFIG = {
     "allInAlways": false,
     "zeroSumBankInflation": 0,
     "roundPR": 10,
-    "namedButtons": false,
+    "namedButtons": true,
     "bossKillBonusValue": 0,
     "autoBenchLeavers": false,
-    "auctionType": 2,
+    "auctionType": 1,
     "rollTime": 20,
     "tax": 0,
     "roundDecimals": 2
 };
+
+const FIELD_NAMES = {
+    "x": "LL/High",
+    "s":"Roll MS",
+    "b":"Roll OS",
+    "m":"Low",
+    "l":"Standard"
+}
 
 function doWork() {
     if (document.getElementById("import-tab").classList.contains("active")) {
@@ -72,7 +80,7 @@ function doImport() {
             roster: [{
                     uid: 1662751134,
                     name: "Hardcore",
-                    fieldNames: [],
+                    fieldNames: FIELD_NAMES,
                     standings: {
                         player: players
                     },
