@@ -59,7 +59,8 @@ function doImport() {
                     fieldNames: [],
                     standings: {
                         player: players
-                    }
+                    },
+                    config: IMPORT_CONFIG
                 }
             ]
         }
