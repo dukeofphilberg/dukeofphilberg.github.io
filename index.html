@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <script src="dkp.js"></script>
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-underline nav-fill">
+                        <li class="nav-item">
+                            <button class="nav-link active" id="import-tab" data-bs-toggle="tab" 
+                            data-bs-target="#import-tab-pane" type="button" role="tab"
+                            aria-controls="import-tab-pane" aria-selected="true">Import dkp</buton>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" id="export-tab" data-bs-toggle="tab" 
+                            data-bs-target="#export-tab-pane" type="button" role="tab"
+                            aria-controls="export-tab-pane" aria-selected="true">Export loot</buton>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="myTabContent">
+
+                    <!-- Import dkp -->
+                    <div class="tab-pane show active card-body" id="import-tab-pane" role="tabpanel" aria-labelledby="import-tab" tabindex="0">
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="lead">Import DKP from the spreadsheet into World of Warcraft</p>
+                                <p>Paste the spreadsheet lines here and transform it for use in <code>/clm genericimport</code>.</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Insert spreadsheet text here" id="import-dkp-textarea">Cayway	Rogue	M.DPS	65.8
+Coldfeet	Warlock	R.DPS	-166.5
+Dean	Mage	R.DPS	221.6
+Eramir	Priest	Healer	163.6
+Fotonygamma	Warlock	R.DPS	571.7
+Freekje	Warrior	M.DPS	338.3
+Holyfartz	Paladin	Tank	370.2
+Jeffie	Mage	R.DPS	230.1
+Krankater	Deathknight	M.DPS	297.2
+Lightborne	Priest	R.DPS	-69.5
+Liriela	Rogue	M.DPS	433.7
+Lohengrin	Warlock	R.DPS	460.7
+Nuít	Shaman	Healer	374.7
+Satie	Druid	R.DPS	288.0
+Saulos	Paladin	M.DPS	101.1
+Serennia	Rogue	M.DPS	57.0
+Servelan	Priest	Healer	319.1
+Sharilla	Priest	R.DPS	184.5
+Xedria	Druid	Healer	83.3
+Xxotrab	Paladin	Healer	781.9
+Zío	Hunter	R.DPS	396.9
+Detherogue	Rogue	M.DPS	476.8
+Enzadenino	Hunter	R.DPS	122.2
+Zoosi	Druid	M.DPS	16.6
+Kamori	Shaman	M.DPS	702.2
+Ambros	Shaman	R.DPS	305.0
+Renavatay	Paladin	Tank	602.3
+Daryi	Druid	R.DPS	468.5
+Xolotl	Shaman	R.DPS	316.4
+Maclevy	Paladin	Healer	305.6
+Nandruz	Deathknight	M.DPS	158.0
+Gnomalix	Mage	R.DPS	308.0
+Justtomass	Paladin	M.DPS	200.0</textarea>
+                                    <label for="import-dkp-textarea">Spreadsheet text</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Export loot -->
+                    <div class="tab-pane card-body" id="export-tab-pane" role="tabpanel" aria-labelledby="export-tab" tabindex="0">
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="lead">Export loot from World of Warcraft into the spreadsheet</p>
+                                <p>Insert the text from <code>/clm export</code> here.</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Import roster here" id="export-loot-textarea"></textarea>
+                                    <label for="export-loot-textarea">CoreLootManager JSON string</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-footer text-body-secondary">
+                    <button type="button" class="btn btn-primary" id="work-btn" onclick="doWork()">Transform</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
