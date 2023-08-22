@@ -46,7 +46,14 @@ const FIELD_NAMES = {
     "b":"Roll OS",
     "m":"Low",
     "l":"Standard"
-}
+};
+
+const BIDS = {
+    0: "ROLL MS/ROLL OS",
+    50: "LOW",
+    150: "MID",
+    300: "LL/HIGH"
+};
 
 function doWork() {
     if (document.getElementById("import-tab").classList.contains("active")) {
@@ -93,4 +100,12 @@ function doImport() {
 
 function doExport() {
     let textarea = document.getElementById("export-loot-textarea");
+    let output = [];
+
+    JSON.parse(textarea.value)["lootHistory"]["roster"][0]["lootHistory"]["item"].forEach(item => {
+        let date = new Date(item.timestamp * 1000);
+        output.push(`${item.player}\t${date.toLocaleDateString()}\t${item.name}\t${BIDS[item.points]}`);
+    });
+
+    textarea.value = output.join("\n");
 }
