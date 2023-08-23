@@ -104,7 +104,8 @@ function doExport() {
 
     JSON.parse(textarea.value)["lootHistory"]["roster"][0]["lootHistory"]["item"].forEach(item => {
         let date = new Date(item.timestamp * 1000);
-        output.push(`${item.player}\t${date.toLocaleDateString()}\t${item.name}\t${BIDS[item.points]}`);
+        let bid = item.auctionInfo.names[item.player];
+        output.push(`${item.player}\t${date.toLocaleDateString()}\t${item.name}\t${bid}`);
     });
 
     textarea.value = output.join("\n");
