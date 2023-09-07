@@ -41,18 +41,18 @@ const IMPORT_CONFIG = {
 };
 
 const FIELD_NAMES = {
-    "x": "LL/High",
-    "s":"Roll MS",
-    "b":"Roll OS",
-    "m":"Low",
-    "l":"Standard"
+    "x": "LOOT LIST/HIGH",
+    "s": "ROLL MS",
+    "b": "ROLL OS",
+    "m": "LOW",
+    "l": "STANDARD"
 };
 
 const BIDS = {
     0: "ROLL MS/ROLL OS",
     50: "LOW",
-    150: "MID",
-    300: "LL/HIGH"
+    150: "STANDARD",
+    300: "LOOT LIST/HIGH"
 };
 
 function doWork() {
@@ -104,7 +104,14 @@ function doExport() {
 
     JSON.parse(textarea.value)["lootHistory"]["roster"][0]["lootHistory"]["item"].forEach(item => {
         let date = new Date(item.timestamp * 1000);
-        let bid = item.auctionInfo.names[item.player];
+        let bid = "UNKNOWN";
+
+        try {
+            bid = item.auctionInfo.names[item.player];
+        } catch {
+            bid = BIDS[item.points];
+        }
+
         output.push(`${item.player}\t${date.toLocaleDateString()}\t${item.name}\t${bid}`);
     });
 
